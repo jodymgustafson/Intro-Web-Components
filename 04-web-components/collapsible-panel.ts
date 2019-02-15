@@ -26,10 +26,8 @@ export class CollapsiblePanelElement extends HTMLElement
     connectedCallback()
     {
         const headerEl = this.shadowRoot.querySelector("header") as HTMLElement;
-        headerEl.innerText = this.header
-
-        const button = this.shadowRoot.querySelector("#toggle-button") as HTMLButtonElement;
-        button.addEventListener("click", ev => this.toggleState(ev));
+        headerEl.addEventListener("click", ev => this.toggleState(ev));
+        (headerEl.querySelector("#header-text") as HTMLElement).innerText = this.header
 
         this.updateVisibility();
     }
@@ -78,6 +76,7 @@ tmpl.innerHTML = `
         header {
             display: inline;
             font-weight: bold;
+            cursor: pointer;
         }
         button {
             width: 1.5em;
@@ -93,11 +92,11 @@ tmpl.innerHTML = `
     </style>
 
     <div>
-        <header></header>
-        <button title="Toggle contents" id="toggle-button">
-            <span id="collapse">&#9650;</span>
-            <span id="expand">&#9660;</span>
-        </button>
+        <header>
+            <span id="header-text"></span>
+            <span id="collapse" title="Hide contents">&#9650;</span>
+            <span id="expand" title="Show contents">&#9660;</span>
+        </header>
     </div>
     <div class="content">
         <slot>

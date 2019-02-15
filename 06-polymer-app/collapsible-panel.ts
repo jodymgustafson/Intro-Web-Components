@@ -38,6 +38,7 @@ export class CollapsiblePanelElement extends LitElement
             header {
                 display: inline;
                 font-weight: bold;
+                cursor: pointer;
             }
             button {
                 width: 1.5em;
@@ -53,12 +54,12 @@ export class CollapsiblePanelElement extends LitElement
         </style>
         
         <div>
-            <header>${this.header}</header>
-            <button title="Toggle contents" @click="${this.toggleState}">
+            <header @click="${this.toggleState}">
+                ${this.header}
                 ${this.expanded ? 
-                    html`<span>&#9650;</span>` :
-                    html`<span>&#9660;</span>`}
-            </button>
+                    html`<span title="Hide contents">&#9650;</span>` :
+                    html`<span title="Show contents">&#9660;</span>`}
+            </header>
         </div>
         <div class="content" ?hidden="${!this.expanded}">
             <slot>Default content</slot>
