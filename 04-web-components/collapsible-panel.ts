@@ -88,7 +88,7 @@ tmpl.innerHTML = `
         }
         .content {
             padding: 1em;
-            background: rgba(230, 235, 230, .5);
+            background: var(--background, rgb(240, 245, 240));
         }
     </style>
 

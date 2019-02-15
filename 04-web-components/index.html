@@ -7,6 +7,9 @@
       collapsible-panel {
         margin-top: 1em;
       }
+      collapsible-panel.blue {
+        --background: rgb(235, 235, 255)
+      }
       .em {
         font-weight: bold;
         font-style: italic;
@@ -18,7 +21,7 @@
   <body>
     <collapsible-panel expanded header="About">
       <p>A web component can have one or more <span class="em">slots</span> in which to insert elements.</p>
-      <collapsible-panel header="Expand me to see the default content"></collapsible-panel>
+      <collapsible-panel class="blue" header="Expand me to see the default content"></collapsible-panel>
     </collapsible-panel>
 
     <say-hello-wrapper to="World"></say-hello-wrapper>
