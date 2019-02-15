@@ -9,6 +9,7 @@ It uses Polymer for some of the components so you must install Polymer to run th
 3. This shows how to handle interaction between multiple components by creating an element that allows the user to enter whom to say hello to and updating the say-hello element.
 4. This example shows how to use slots to allow the users of your custom element to insert their own content into the element.
 5. In this example we show all of the components rewritten using Polymer, as well as an example of outputing repeating elements.
+6. This is a simple "app" that displays information about a library of web components and how to use them.
 
 ## Install the Polymer-CLI
 

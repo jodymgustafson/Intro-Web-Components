@@ -1,16 +1,19 @@
 import { html, LitElement } from 'lit-element';
-import "./component-index";
 import "./component-info";
 import "./collapsible-panel";
 import "./tip-popup";
 import "./unordered-list";
+import "./component-index";
+import { ComponentIndexElement } from './component-index';
 
 export class ComponentLibraryAppElement extends LitElement
 {
     firstUpdated(changedProperties)
     {
-        super.connectedCallback();
-        (this as any).shadowRoot.querySelector("component-index").buildIndex();
+        let root = (this as any).shadowRoot as ShadowRoot;
+        const items = root.querySelectorAll("component-info");
+        const index: ComponentIndexElement = root.querySelector("component-index") as any;
+        index.buildIndex(items);
     }
 
     render(): HTMLTemplateElement {

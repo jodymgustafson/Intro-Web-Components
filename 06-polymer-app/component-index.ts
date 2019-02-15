@@ -1,6 +1,7 @@
 import { html, LitElement } from 'lit-element';
 import { ComponentInfoElement } from './component-info';
 
+/** Builds the index from a list of ComponentInfoElements */
 export class ComponentIndexElement extends LitElement
 {
     // Declare the properties
@@ -18,10 +19,10 @@ export class ComponentIndexElement extends LitElement
         this.links = []
     }
 
-    buildIndex()
+    /** Updates the links from a list of ComponentInfoElements */
+    buildIndex(items: NodeListOf<Element>)
     {
         this.links = []
-        const items = document.querySelectorAll("component-info");
         items.forEach(el => this.links.push((el as any)));
     }
 
@@ -30,14 +31,18 @@ export class ComponentIndexElement extends LitElement
             <style>
                 :host { display: block }
                 :host([hidden]) { display: none }
-                component-info {
-                    margin: 0 0 1em 1em;
-                }
             </style>
             <ul>
-                ${this.links.map(item => html`<li><a href="#${item.tagName}">${item.componentName}</a></li>`)}    
+                ${this.links.map(item => html`<li><a href="#${item.tagName}" @click="${this.jumpToElement}">${item.componentName}</a></li>`)}    
             </ul>
         `;
+    }
+
+    private jumpToElement(ev: MouseEvent): void
+    {
+        const tagName = ev.srcElement.getAttribute("href").slice(1);
+        const el = this.links.find(i => i.tagName === tagName) as any;
+        el.scrollIntoView();
     }
 }
 
