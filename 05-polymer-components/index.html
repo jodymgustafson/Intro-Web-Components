@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>polymer-component-intro</title>
+    <meta name="description" content="An intro to Polymer web components">
+
+    <style>
+      collapsible-panel {
+        margin-top: 1em;
+      }
+    </style>
+    <script type="module" src="say-hello-wrapper.js"></script>
+    <script type="module" src="collapsible-panel.js"></script>
+    <script type="module" src="unordered-list.js"></script>
+  </head>
+  <body>
+    <collapsible-panel expanded header="About">
+      <p>A web component can have one or more <span class="em">slots</span> in which to insert elements.</p>
+      <collapsible-panel header="Expand me to see the default content"></collapsible-panel>
+    </collapsible-panel>
+
+    <say-hello-wrapper to="World"></say-hello-wrapper>
+
+    <collapsible-panel header="I have a secret message inside...">
+      <say-hello-wrapper to="THAT Conference"></say-hello-wrapper>
+    </collapsible-panel>
+
+    <h2>This list is generated dynamically</h2>
+    <unordered-list items="Apples, Oranges, Bananas, Pears, Mangos"></unordered-list>
+  </body>
+</html>

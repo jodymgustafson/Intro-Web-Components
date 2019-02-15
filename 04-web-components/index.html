@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>web-component-intro</title>
+
+    <style>
+      collapsible-panel {
+        margin-top: 1em;
+      }
+      .em {
+        font-weight: bold;
+        font-style: italic;
+      }
+    </style>
+    <script type="module" src="say-hello-wrapper.js"></script>
+    <script type="module" src="collapsible-panel.js"></script>
+  </head>
+  <body>
+    <collapsible-panel expanded header="About">
+      <p>A web component can have one or more <span class="em">slots</span> in which to insert elements.</p>
+      <collapsible-panel header="Expand me to see the default content"></collapsible-panel>
+    </collapsible-panel>
+
+    <say-hello-wrapper to="World"></say-hello-wrapper>
+
+    <collapsible-panel header="I have a secret message inside...">
+      <say-hello-wrapper to="THAT Conference"></say-hello-wrapper>
+    </collapsible-panel>
+</body>
+</html>

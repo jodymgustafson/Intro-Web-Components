@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>web-component-intro</title>
+    <script type="module" src="say-hello.js"></script>
+  </head>
+  <body>
+    <h1>
+      <say-hello to="World"></say-hello>
+    </h1>
+    <p>
+      Now our web component has a property that can be changed and is updated on the page.
+    </p>
+    <p>
+      document.querySelector("say-hello").to = "THAT Conference"
+    </p>
+  </body>
+</html>
