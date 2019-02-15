@@ -43,7 +43,8 @@ export class SayHelloInputElement extends LitElement
         // Update the to property every time a key is pressed
         this.to = (ev.target as HTMLInputElement).value;
         (this as any).dispatchEvent(new CustomEvent("to-change", { 
-            detail: { to : this.to }
+            detail: { to : this.to },
+            composed: true
         }));
     }
 }

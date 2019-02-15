@@ -53,10 +53,13 @@ export class SayHelloInputElement extends HTMLElement
 
     keyPressed(ev: KeyboardEvent)
     {
-        // Update the to property every time a key is pressed
+        // Update the "to" property every time a key is pressed
         this.to = (ev.target as HTMLInputElement).value;
+        
+        // And dispatch a custom event to notify the parent
         this.dispatchEvent(new CustomEvent("to-change", { 
-            detail: { to: this.to }
+            detail: { to: this.to },
+            composed: true
         }));
     }
 }
