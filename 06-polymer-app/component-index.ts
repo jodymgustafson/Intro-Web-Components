@@ -1,32 +1,20 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, customElement, property } from 'lit-element';
 import { ComponentInfoElement } from './component-info';
 
 /** Builds the index from a list of ComponentInfoElements */
+@customElement('component-index')
 export class ComponentIndexElement extends LitElement
 {
-    // Declare the properties
-    static get properties() { 
-        return { 
-            links: { type: Array, attribute: false }
-        }
-    }
-
-    private links: ComponentInfoElement[];
-
-    constructor()
-    {
-        super();
-        this.links = []
-    }
+    @property({type: Array, attribute: false}) links: ComponentInfoElement[] = [];
 
     /** Updates the links from a list of ComponentInfoElements */
     buildIndex(items: NodeListOf<Element>)
     {
         this.links = []
-        items.forEach(el => this.links.push((el as any)));
+        items.forEach(el => this.links.push((el as ComponentInfoElement)));
     }
 
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host { display: block }
@@ -41,9 +29,7 @@ export class ComponentIndexElement extends LitElement
     private jumpToElement(ev: MouseEvent): void
     {
         const tagName = ev.srcElement.getAttribute("href").slice(1);
-        const el = this.links.find(i => i.tagName === tagName) as any;
+        const el = this.links.find(i => i.tagName === tagName);
         el.scrollIntoView();
     }
 }
-
-customElements.define('component-index', ComponentIndexElement);

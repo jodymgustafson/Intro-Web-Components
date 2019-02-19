@@ -22,7 +22,7 @@ export class UnorderedListElement extends LitElement
         super();
     }
 
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host { display: block }

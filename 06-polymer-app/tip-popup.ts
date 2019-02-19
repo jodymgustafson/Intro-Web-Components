@@ -1,43 +1,38 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, customElement, property } from 'lit-element';
 
 /**
  * An element that displays a tip in a popup when the element is hovered
  * @attribute text  Popup tip text
  * @attribute position  Position of the popup (bottom, top)
  */
+@customElement('tip-popup')
 export class TipPopupElement extends LitElement
 {
-    // Declare the properties
+    @property({type: String}) text = "";
+    @property({type: String, attribute: false}) popupClass = "hidden"; // this is only a property
+
+    // Declare position here because we want to implement our own property accessor
     static get properties() { 
         return { 
-            text: { type: String },
-            position: { type: String },
-            popupClass: {type: String, attribute: false } // this one is only a property
+            position: { type: String }
         }
     }
 
-    // Implement our own property accessor with validation
-    private _position: string;
+    // Implement our own property accessor for position with validation
+    private _position = "top";
     get position(): string { return this._position; }
     set position(val: string) {
-        this._position = val;
+        const oldValue = this._position;
         if (["bottom", "top"].indexOf(val) < 0)
         {
             this._position = "top";
         }
-        (this as any).requestUpdate('position', this._position);
-    }
-
-    // Declare for TS compiler
-    text: string;
-    private popupClass: string;
-
-    constructor()
-    {
-        super();
-        this.text = "";
-        this.popupClass = "hidden";
-        this.position = "top";
+        else
+        {
+            this._position = val;
+        }
+        // Since we're implementing it ourselves, we need to tell Polymer the property changed
+        this.requestUpdate('position', oldValue);
     }
 
     render() {
@@ -93,5 +88,3 @@ export class TipPopupElement extends LitElement
         this.popupClass = "hidden";
     }
 }
-
-customElements.define('tip-popup', TipPopupElement);

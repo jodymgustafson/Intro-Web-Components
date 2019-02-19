@@ -1,29 +1,16 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, customElement, property } from 'lit-element';
 
 /**
  * An element that creates an unordered list from a comma separated list of values
  * @attribute items  Comma separated list of items
  * @example <unordered-list items="a, b, c, d"/>
  */
+@customElement('unordered-list')
 export class UnorderedListElement extends LitElement
 {
-    // Declare the properties
-    static get properties() { 
-        return {
-            // Use a converter to convert the csv string to an array of strings
-            items: { converter: (value: string) => value.split(",").map(i => i.trim()) }
-        }
-    }
+    @property({ converter: (value: string) => value.split(",").map(i => i.trim()) }) items: string[];
 
-    // Declare for TS compiler
-    items: string[];
-
-    constructor()
-    {
-        super();
-    }
-
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host { display: block }
@@ -35,5 +22,3 @@ export class UnorderedListElement extends LitElement
         `;
     }
 }
-
-customElements.define('unordered-list', UnorderedListElement);

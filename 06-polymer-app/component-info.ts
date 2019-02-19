@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, customElement, property } from 'lit-element';
 import "./collapsible-panel";
 
 /**
@@ -9,19 +9,14 @@ import "./collapsible-panel";
  * @slot example-tag Holds an example usage of the element
  * @slot example Holds an example of the element in action
  */
+@customElement('component-info')
+
 export class ComponentInfoElement extends LitElement
 {
-    static get properties() { 
-        return { 
-            componentName: { type: String },
-            tagName: { type: String },
-        }
-    }
+    @property({type: String}) componentName = "";
+    @property({type: String}) tagName = "";
 
-    componentName: string;
-    tagName: string;
-
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host { display: block }
@@ -40,5 +35,3 @@ export class ComponentInfoElement extends LitElement
         `;
     }
 }
-
-customElements.define('component-info', ComponentInfoElement);

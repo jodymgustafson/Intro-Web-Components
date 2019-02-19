@@ -28,7 +28,7 @@ export class SayHelloElement extends LitElement
         super.attributeChangedCallback(name, oldVal, newVal);
     }
 
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host { display: block }

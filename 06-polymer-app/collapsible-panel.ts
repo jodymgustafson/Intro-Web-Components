@@ -1,30 +1,16 @@
-import { html, LitElement, TemplateResult } from 'lit-element';
+import { html, LitElement, TemplateResult, customElement, property } from 'lit-element';
 
 /**
  * A panel with a button to show or hide it
  * @attribute expanded  If defined the panel will be expanded
  * @attribute header  Text for the panel header
  */
+@customElement('collapsible-panel')
+
 export class CollapsiblePanelElement extends LitElement
 {
-    // Declare the properties
-    static get properties() { 
-        return { 
-            header: { type: String },
-            expanded: { type: Boolean }
-        }
-    }
-
-    // Declare for TS compiler
-    header: string;
-    expanded: boolean;
-
-    constructor()
-    {
-        super();
-        this.header = "Unnamed";
-        this.expanded = false;
-    }
+    @property({type: String}) header = "Unnamed";
+    @property({type: Boolean}) expanded = false;
 
     render(): TemplateResult
     {
@@ -72,5 +58,3 @@ export class CollapsiblePanelElement extends LitElement
         this.expanded = !this.expanded;
     }
 }
-
-customElements.define('collapsible-panel', CollapsiblePanelElement);

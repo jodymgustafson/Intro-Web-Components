@@ -17,7 +17,7 @@ export class SayHelloWrapperElement extends LitElement
 
     to: string;
 
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host { display: block }

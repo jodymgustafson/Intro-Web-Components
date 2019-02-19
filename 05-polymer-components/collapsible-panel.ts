@@ -1,4 +1,4 @@
-import { html, LitElement, TemplateResult } from 'lit-element';
+import { html, LitElement } from 'lit-element';
 
 /**
  * A panel with a button to show or hide it
@@ -26,7 +26,7 @@ export class CollapsiblePanelElement extends LitElement
         this.expanded = false;
     }
 
-    render(): TemplateResult
+    render()
     {
         return html`
         <style>

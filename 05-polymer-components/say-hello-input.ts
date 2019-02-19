@@ -20,11 +20,11 @@ export class SayHelloInputElement extends LitElement
     firstUpdated(changedProperties)
     {
         // Perform one-time work after the element’s template has been created
-        let input = (this as any).renderRoot.querySelector("input");
+        let input = this.renderRoot.querySelector("input");
         input.focus();
     }
 
-    render(): HTMLTemplateElement {
+    render() {
         return html`
             <style>
                 :host {
@@ -38,11 +38,11 @@ export class SayHelloInputElement extends LitElement
         `;
     }
 
-    keyPressed(ev: KeyboardEvent)
+    private keyPressed(ev: KeyboardEvent)
     {
         // Update the to property every time a key is pressed
         this.to = (ev.target as HTMLInputElement).value;
-        (this as any).dispatchEvent(new CustomEvent("to-change", { 
+        this.dispatchEvent(new CustomEvent("to-change", { 
             detail: { to : this.to },
             composed: true
         }));
