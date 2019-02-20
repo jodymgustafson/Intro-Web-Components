@@ -1,4 +1,4 @@
-import { html, LitElement, customElement, property } from 'lit-element';
+import { html, LitElement, customElement, property, css } from 'lit-element';
 
 /**
  * An element that creates an unordered list from a comma separated list of values
@@ -10,12 +10,13 @@ export class UnorderedListElement extends LitElement
 {
     @property({ converter: (value: string) => value.split(",").map(i => i.trim()) }) items: string[];
 
+    static styles = css`
+        :host { display: block }
+        :host([hidden]) { display: none }
+    `;
+    
     render() {
         return html`
-            <style>
-                :host { display: block }
-                :host([hidden]) { display: none }
-            </style>
             <ul>
                 ${this.items.map(item => html`<li>${item}</li>`)}    
             </ul>

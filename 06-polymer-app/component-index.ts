@@ -1,4 +1,4 @@
-import { html, LitElement, customElement, property } from 'lit-element';
+import { html, LitElement, customElement, property, css } from 'lit-element';
 import { ComponentInfoElement } from './component-info';
 
 /** Builds the index from a list of ComponentInfoElements */
@@ -14,12 +14,13 @@ export class ComponentIndexElement extends LitElement
         items.forEach(el => this.links.push((el as ComponentInfoElement)));
     }
 
+    static styles = css`
+        :host { display: block }
+        :host([hidden]) { display: none }
+    `;
+    
     render() {
         return html`
-            <style>
-                :host { display: block }
-                :host([hidden]) { display: none }
-            </style>
             <ul>
                 ${this.links.map(item => html`<li><a href="#${item.tagName}" @click="${this.jumpToElement}">${item.componentName}</a></li>`)}    
             </ul>

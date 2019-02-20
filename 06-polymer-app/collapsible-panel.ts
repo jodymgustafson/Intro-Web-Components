@@ -1,4 +1,4 @@
-import { html, LitElement, TemplateResult, customElement, property } from 'lit-element';
+import { html, LitElement, TemplateResult, customElement, property, css } from 'lit-element';
 
 /**
  * A panel with a button to show or hide it
@@ -12,33 +12,33 @@ export class CollapsiblePanelElement extends LitElement
     @property({type: String}) header = "Unnamed";
     @property({type: Boolean}) expanded = false;
 
+    static styles = css`
+        :host {
+            display: block;
+            font-size: 16px;
+            font-family: Roboto, sans-serif;
+        }
+        header {
+            display: inline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button {
+            width: 1.5em;
+            height: 1.5em;
+            border: none;
+            background: transparent;
+            padding: 0;
+        }
+        .content {
+            padding: 1em;
+            background: var(--background, rgb(240, 245, 240));
+        }
+    `;
+    
     render(): TemplateResult
     {
         return html`
-        <style>
-            :host {
-                display: block;
-                font-size: 16px;
-                font-family: Roboto, sans-serif;
-            }
-            header {
-                display: inline;
-                font-weight: bold;
-                cursor: pointer;
-            }
-            button {
-                width: 1.5em;
-                height: 1.5em;
-                border: none;
-                background: transparent;
-                padding: 0;
-            }
-            .content {
-                padding: 1em;
-                background: var(--background, rgb(240, 245, 240));
-            }
-        </style>
-        
         <div>
             <header @click="${this.toggleState}">
                 ${this.header}

@@ -1,4 +1,4 @@
-import { html, LitElement, customElement, property } from 'lit-element';
+import { html, LitElement, customElement, property, css } from 'lit-element';
 import "./collapsible-panel";
 
 /**
@@ -16,12 +16,13 @@ export class ComponentInfoElement extends LitElement
     @property({type: String}) componentName = "";
     @property({type: String}) tagName = "";
 
+    static styles = css`
+        :host { display: block }
+        :host([hidden]) { display: none }
+    `;
+
     render() {
         return html`
-            <style>
-                :host { display: block }
-                :host([hidden]) { display: none }
-            </style>
             <collapsible-panel header="${this.componentName}">
                 <h2>&lt;${this.tagName}&gt;</h2>
                 <h3>Attributes</h3>

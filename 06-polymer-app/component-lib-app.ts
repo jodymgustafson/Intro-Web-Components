@@ -1,4 +1,4 @@
-import { html, LitElement, customElement } from 'lit-element';
+import { html, LitElement, customElement, css } from 'lit-element';
 import "./component-info";
 import "./collapsible-panel";
 import "./tip-popup";
@@ -17,16 +17,16 @@ export class ComponentLibraryAppElement extends LitElement
         index.buildIndex(items);
     }
 
+    static styles = css`
+        :host { display: block }
+        :host([hidden]) { display: none }
+        component-info {
+            margin: 0 0 1em 1em;
+        }
+    `;
+    
     render() {
         return html`
-            <style>
-                :host { display: block }
-                :host([hidden]) { display: none }
-                component-info {
-                    margin: 0 0 1em 1em;
-                }
-            </style>
-
             <h1>
                 Component Library
             </h1>
