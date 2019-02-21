@@ -14,16 +14,6 @@ export class SayHelloElement extends HTMLElement
         this.setAttribute("to", value);
     }
 
-    constructor()
-    {
-        // Always call super() first
-        super();
-
-        // Create a shadow root
-        let shadow = this.attachShadow({mode: 'open'});
-        shadow.appendChild(tmpl.content.cloneNode(true));
-    }
-
     // List the attributes we want to observe in attributeChangedCallback
     static get observedAttributes(): string[] {
         return ['to'];
@@ -38,6 +28,16 @@ export class SayHelloElement extends HTMLElement
             this.shadowRoot.querySelector("span").innerText = this.to + "!";
         }
     }
+
+    constructor()
+    {
+        // Always call super() first
+        super();
+
+        // Create a shadow root
+        let shadow = this.attachShadow({mode: 'open'});
+        shadow.appendChild(tmpl.content.cloneNode(true));
+    }
 }
 
 const tmpl = document.createElement('template');
@@ -48,7 +48,7 @@ tmpl.innerHTML = `
         span { color: green; }
     </style>
     <div>Hello, <span></span></div>
-    `;
+`;
 
 
 customElements.define('say-hello', SayHelloElement);

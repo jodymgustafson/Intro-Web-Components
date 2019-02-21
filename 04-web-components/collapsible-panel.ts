@@ -89,6 +89,12 @@ tmpl.innerHTML = `
             padding: 1em;
             background: var(--background, rgb(240, 245, 240));
         }
+        footer {
+            font-size: .8em;
+            font-style: italic;
+            color: gray;
+            margin-top: 1em;
+        }
     </style>
 
     <div>
@@ -102,6 +108,9 @@ tmpl.innerHTML = `
         <slot>
             Default content
         </slot>
+        <footer>
+            <slot name="footer"></slot>
+        </footer>
     </div>
 `;
 

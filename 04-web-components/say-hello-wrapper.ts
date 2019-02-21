@@ -1,7 +1,7 @@
 import "./say-hello.js";
 import "./say-hello-input.js";
 import { SayHelloElement } from "./say-hello";
-import { SayHelloInputElement } from "./say-hello-input.js";
+import { SayHelloInputElement } from "./say-hello-input";
 
 /**
   * An element that manages interaction between say-hello and say-hello-input elements

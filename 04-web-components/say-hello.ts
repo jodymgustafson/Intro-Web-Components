@@ -49,7 +49,7 @@ tmpl.innerHTML = `
         span { color: green; }
     </style>
     <div>Hello, <span></span></div>
-    `;
+`;
 
 
 customElements.define('say-hello', SayHelloElement);

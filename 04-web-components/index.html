@@ -20,14 +20,17 @@
   </head>
   <body>
     <collapsible-panel expanded header="About">
-      <p>A web component can have one or more <span class="em">slots</span> in which to insert elements.</p>
-      <collapsible-panel class="blue" header="Expand me to see the default content"></collapsible-panel>
+      <div>
+        <p>A web component can have one or more <span class="em">slots</span> in which to insert elements.</p>
+        <collapsible-panel class="blue" header="Expand me to see the default content"></collapsible-panel>
+      </div>
+      <div slot="footer">
+        This is in a named slot
+      </div>
     </collapsible-panel>
 
-    <say-hello-wrapper to="World"></say-hello-wrapper>
-
     <collapsible-panel header="I have a secret message inside...">
-      <say-hello-wrapper to="THAT Conference"></say-hello-wrapper>
+      <say-hello-wrapper to="YOU!"></say-hello-wrapper>
     </collapsible-panel>
 </body>
 </html>

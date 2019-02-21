@@ -10,7 +10,6 @@ import "./collapsible-panel";
  * @slot example Holds an example of the element in action
  */
 @customElement('component-info')
-
 export class ComponentInfoElement extends LitElement
 {
     @property({type: String}) componentName = "";

@@ -15,6 +15,21 @@ export class SayHelloInputElement extends HTMLElement
         this.setAttribute("to", value);
     }
 
+    // List the attributes we want to observe in attributeChangedCallback
+    static get observedAttributes(): string[] {
+        return ['to'];
+    }
+
+    // Listen for attribute changes
+    attributeChangedCallback(name: string, oldValue: string, newValue: string)
+    {
+        console.log(`${name} changed from ${oldValue} to ${newValue}`);
+        if (name === "to")
+        {
+            this.shadowRoot.querySelector("input").value = this.to;
+        }
+    }
+
     constructor()
     {
         super();
@@ -34,21 +49,6 @@ export class SayHelloInputElement extends HTMLElement
         // Listen for keyup events
         input.addEventListener("keyup", ev => this.keyPressed(ev));
         input.focus();
-    }
-
-    // List the attributes we want to observe in attributeChangedCallback
-    static get observedAttributes(): string[] {
-        return ['to'];
-    }
-
-    // Listen for attribute changes
-    attributeChangedCallback(name: string, oldValue: string, newValue: string)
-    {
-        console.log(`${name} changed from ${oldValue} to ${newValue}`);
-        if (name === "to")
-        {
-            this.shadowRoot.querySelector("input").value = this.to;
-        }
     }
 
     keyPressed(ev: KeyboardEvent)
